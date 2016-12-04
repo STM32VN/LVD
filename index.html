@@ -105,33 +105,16 @@ function LUX_periodic() {
 }
 
 <!-- SET SENSOR -->
-function fcn_Sensor1()
+function fcn_Sensor()
 {
 	var xhr = new XMLHttpRequest();
-	var str1 = "http://api.thingspeak.com/update?key=CC6LNKOFMU583XMM&field1=";
-	var str2 = document.getElementById('NHIET_DO').value;
+	var str1 = "http://api.thingspeak.com/update?key=CC6LNKOFMU583XMM&";
+	var str2 = document.getElementById('SET').value;
 	var str = str1.concat(str2);
 	xhr.open("GET", str);
 	xhr.send();  
 }
-function fcn_Sensor2()
-{
-	var xhr = new XMLHttpRequest();
-	var str1 = "http://api.thingspeak.com/update?key=CC6LNKOFMU583XMM&field2=";
-	var str2 = document.getElementById('DO_AM_SET').value;
-	var str = str1.concat(str2);
-	xhr.open("GET", str);
-	xhr.send();  
-}
-function fcn_Sensor3()
-{
-	var xhr = new XMLHttpRequest();
-	var str1 = "http://api.thingspeak.com/update?key=CC6LNKOFMU583XMM&field3=";
-	var str2 = document.getElementById('LUX_SET').value;
-	var str = str1.concat(str2);
-	xhr.open("GET", str);
-	xhr.send();  
-}
+
 
 
 window.onload=function(){
@@ -148,9 +131,9 @@ window.onload=function(){
 
 <body>
 <!-- DKTX Toggle  -->
-<fieldset><legend>EN Read</legend><button onclick="fcn_ENOn()">ON</button> <button onclick="fcn_ENoff()">OFF</button> [<b id="EN_display">x</b>] </fieldset>
+<fieldset><legend>EN</legend><button onclick="fcn_ENOn()">ON</button> <button onclick="fcn_ENoff()">OFF</button> [<b id="EN_display">x</b>] </fieldset>
 <!-- SENSOR Display -->
-<fieldset><legend>SENSOR Read </legend>
+<fieldset><legend> READ SENSOR </legend>
 <button onclick="fcn_T_display()">Update</button> <b id="LM35">0.00</b> *C 
 
 <button onclick="fcn_H_display()">Update</button> <b id="DOAM">0.00</b> % 
@@ -158,11 +141,9 @@ window.onload=function(){
 <button onclick="fcn_LUX_display()">Update</button> <b id="ANHSANG">0.00</b> Lux 
 </fieldset>
 
-<!-- LCD Demo -->
-<fieldset><legend>SET SENSOR</legend>
-Line1: <input type="text" id="NHIET_DO" value="SET-NHIET-DO"><button onclick="fcn_Sensor1()">Set</button><br>
-Line2: <input type="text" id="DO_AM_SET" value="SET-DO-AM"><button onclick="fcn_Sensor2()">Set</button><br>
-Line3: <input type="text" id="LUX_SET" value="SET-ANH-SANG"><button onclick="fcn_Sensor3()">Set</button><br>
+<!-- SET Demo -->
+<fieldset><legend>SET NHIETDO|DOAM|ANHSANG</legend>
+Field1|Field2|Field3: <input type="text" id="SET" value="field1=50.11&field2=30.11&field3=100" size="30"><button onclick="fcn_Sensor()">Set</button><br>
 </fieldset>
 
 
