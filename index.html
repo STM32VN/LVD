@@ -2,152 +2,35 @@
 <html>
 <head>
 <script>
-<!-- DKTX Read function -->
 
-function fcn_ENOn()
-{
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "http://api.thingspeak.com/update?key=CC6LNKOFMU583XMM&field4=1");
-	xhr.onload = function() {
-		var xhr2 = new XMLHttpRequest();
-		xhr2.open("GET", "https://thingspeak.com/channels/116306/fields/4/last");
-		xhr2.onload = function() { document.getElementById("EN_display").innerHTML=this.responseText; }
-		xhr2.send();
-	}
-	xhr.send();  
-}
-function fcn_ENoff()
-{
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "http://api.thingspeak.com/update?key=CC6LNKOFMU583XMM&field4=0");
-	xhr.onload = function() {
-		var xhr2 = new XMLHttpRequest();
-		xhr2.open("GET", "https://thingspeak.com/channels/116306/fields/4/last");
-		xhr2.onload = function() { document.getElementById("EN_display").innerHTML=this.responseText; }
-		xhr2.send();
-	}
-	xhr.send();  
-}
-
-
-function EN_periodic() {
-	var xmlHttp;
-	xmlHttp=new XMLHttpRequest();
-	xmlHttp.onreadystatechange=function(){		
-		if(xmlHttp.readyState==4){
-			document.getElementById('EN_display').innerHTML=xmlHttp.responseText;
-		}
-	}	
-	
-	xmlHttp.open("GET","https://thingspeak.com/channels/116306/fields/4/last",true);
-	xmlHttp.send(null);
-}
-
-<!-- SENSOR Read function -->
-function fcn_T_display()
-{
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "https://thingspeak.com/channels/103193/fields/1/last");
-	xhr.onload = function() { document.getElementById("LM35").innerHTML=this.responseText; }
-	xhr.send();  
-}
-function T_periodic() {
-	var xmlHttp;
-	xmlHttp=new XMLHttpRequest();
-	xmlHttp.onreadystatechange=function(){		
-		if(xmlHttp.readyState==4){
-			var short=parseFloat(xmlHttp.responseText).toFixed(2);
-			document.getElementById('LM35').innerHTML=short;
-		}
-	}
-	xmlHttp.open("GET","https://thingspeak.com/channels/103193/fields/1/last",true);
-	xmlHttp.send(null);
-}
-
-function fcn_H_display()
-{
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "https://thingspeak.com/channels/103193/fields/2/last");
-	xhr.onload = function() { document.getElementById("DOAM").innerHTML=this.responseText; }
-	xhr.send();  
-}
-function H_periodic() {
-	var xmlHttp;
-	xmlHttp=new XMLHttpRequest();
-	xmlHttp.onreadystatechange=function(){		
-		if(xmlHttp.readyState==4){
-			var short=parseFloat(xmlHttp.responseText).toFixed(2);
-			document.getElementById('DOAM').innerHTML=short;
-		}
-	}
-	xmlHttp.open("GET","https://thingspeak.com/channels/103193/fields/2/last",true);
-	xmlHttp.send(null);
-}
-
-function fcn_LUX_display()
-{
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "https://thingspeak.com/channels/103193/fields/3/last");
-	xhr.onload = function() { document.getElementById("ANHSANG").innerHTML=this.responseText; }
-	xhr.send();  
-}
-function LUX_periodic() {
-	var xmlHttp;
-	xmlHttp=new XMLHttpRequest();
-	xmlHttp.onreadystatechange=function(){		
-		if(xmlHttp.readyState==4){
-			var short=parseFloat(xmlHttp.responseText).toFixed(2);
-			document.getElementById('ANHSANG').innerHTML=short;
-		}
-	}
-	xmlHttp.open("GET","https://thingspeak.com/channels/103193/fields/3/last",true);
-	xmlHttp.send(null);
-}
-
-<!-- SET SENSOR -->
-function fcn_Sensor()
-{
-	var xhr = new XMLHttpRequest();
-	var str1 = "http://api.thingspeak.com/update?key=CC6LNKOFMU583XMM&";
-	var str2 = document.getElementById('SET').value;
-	var str = str1.concat(str2);
-	xhr.open("GET", str);
-	xhr.send();  
-}
-
-
-
-window.onload=function(){
-	setInterval('EN_periodic()',500);
-	setInterval('ledtoggle_periodic()',500);
-	setInterval('T_periodic()',500);
-	setInterval('H_periodic()',500);
-	setInterval('LUX_periodic()',500);
-	setInterval('pwm_duty_periodic()',500);
-	
-}
 </script>
 </head>
 
 <body>
-<!-- DKTX Toggle  -->
-<fieldset><legend>EN</legend><button onclick="fcn_ENOn()">ON</button> <button onclick="fcn_ENoff()">OFF</button> [<b id="EN_display">x</b>] </fieldset>
-<!-- SENSOR Display -->
-<fieldset><legend> READ SENSOR </legend>
-<button onclick="fcn_T_display()">Update</button> <b id="LM35">0.00</b> *C 
+<div class="box-pst">
+<h1>Đứng nhất</h1>
+Con: Bố ơi! Hôm nay thầy bảo con đứng nhất lớp.<br />
+<br />
+Bố: Giỏi! Thầy bảo con học giỏi nhất hả?<br />
+<br />
+Con: Dạ không, thầy bảo con hay ngủ gật nhất, hay bị điểm kém nhất ạ.<br />
+<br />
+Bố: ??!<br />
+<br />
+<br />
+o O o<br />
+<br />
+<br />
+Thầy: Nhà em có mấy anh chị em?<br />
+<br />
+Trò: Dạ! Nhà em có 5 anh chị em. Đầu tiên là em, sau đó đến em em, em rồi đến em em em, rồi đến em em em em, cuối cùng là em em em em em ạ!<br />
+<br />
+Thầy: ?!?
+</div>
 
-<button onclick="fcn_H_display()">Update</button> <b id="DOAM">0.00</b> % 
 
-<button onclick="fcn_LUX_display()">Update</button> <b id="ANHSANG">0.00</b> Lux 
-</fieldset>
-
-<!-- SET Demo -->
-<fieldset><legend>SET NHIETDO|DOAM|ANHSANG</legend>
-Field1|Field2|Field3: <input type="text" id="SET" value="field1=50.11&field2=30.11&field3=100" size="30"><button onclick="fcn_Sensor()">Set</button><br>
-</fieldset>
 
 
 <p><a href="/">home</a>
-
 </body>
 </html>
