@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+ <rss version='0.91'>
+
+ 	
+
+<channel>
+
+ <title>PC World Vietnam</title>
+
+ <link>http://www.pcworld.com.vn/news/weekly.htm</link>
+
+ <description>News - By PC World Vietnam </description>
+
+ <language>en-us</language>
+
+ <image>
+
+ <title>PC World Vietnam</title>
+
+ <url>http://www.pcworld.com.vn/img/logoPCW.gif</url>
+
+ <link>http://www.pcworld.com.vn</link>
+
+ <width>258</width>
+
+ <height>60</height>
+
+ </image>
+
+<item>
+
+ <title>Thị trường di động sôi động</title>
+
+ <link>http://www.pcworld.com.vn</link>
+
+ <description>
+
+ Thị trường điện thoại di động sôi động với nhiều model mới hấp dẫn về kiểu dáng lẫn tính năng.
+
+ </description>
+
+  </item>
+
+<item>
+
+ <title>Bo mạch chủ cho AMD</title>
+
+ <link>http://wwwpcworld.com.vn</link>
+
+ <description>
+
+ So sánh, đánh giá các bo mạch chủ hỗ trợ CPU AMD hiện có trên thị trường.
+
+ </description>
+
+ </item>
+
+ </channel>
+
+ </rss>
